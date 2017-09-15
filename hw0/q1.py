@@ -1,4 +1,5 @@
-with open('words.txt','r') as myfile:
+import sys
+with open(sys.argv[1],'r') as myfile:
     data = myfile.read()
 origList = data.split()
 resultList=[]
@@ -26,13 +27,11 @@ for i in resultList:
         ans+=(str(i))
         ans+=(' ')
         nowLoc+=1
-    elif nowLoc != num:
+    elif nowLoc != 3*num-1:
         ans+=(str(i))
         ans+=("\n")
         nowLoc+=1
     else:
-        print(str(i))
         ans+=(str(i))
 with open("Q1.txt","w") as output:
     output.write(ans)
-print(ans)
