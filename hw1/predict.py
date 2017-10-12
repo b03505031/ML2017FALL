@@ -49,23 +49,26 @@ w=np.array(weight)
 #Readin predict
 file_test = open(predictFile, 'r', encoding='Big5')
 test_table = []
+totalPred = 0
 for row in csv.reader(file_test):
-	tmp = []
-	for column in range(2, 11):
-		if row[column] != "NR":
-			tmp.append(float(row[column]))
-		else:
-			tmp.append(0.0)
-	test_table.append(tmp)
+    totalPred+=1
+    tmp = []
+    for column in range(2, 11):
+        if row[column] != "NR":
+            tmp.append(float(row[column]))
+        else:
+            tmp.append(0.0)
+    test_table.append(tmp)
+print(int(totalPred/18))
 file_test.close()
-for i in range(240):
+for i in range(int(totalPred/18)):
     for j in range(9):
         if(float(test_table[18*i+8][j]==-1)):
             test_table[18 * i + 8][j] = test_table[18 * i + 8][j-1]
         if (float(test_table[18 * i + 9][j] == -1)):
             test_table[18 * i + 9][j] = test_table[18 * i + 9][j - 1]
 test_x = []
-for i in range(240):
+for i in range(int(totalPred/18)):
     test_x.append([1])
     if(AMB_TEMP!=0):
         for j in range(9-AMB_TEMP, 9):
@@ -138,7 +141,7 @@ if(ifSave==1):
     ofile = open(resFile, 'w')
     ofile.write("id,value")
     ofile.write('\n')
-    for i in range(240):
+    for i in range(int(totalPred/18)):
         ofile.write("id_")
         ofile.write(str(i))
         ofile.write(",")
