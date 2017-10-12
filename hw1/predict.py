@@ -59,7 +59,6 @@ for row in csv.reader(file_test):
         else:
             tmp.append(0.0)
     test_table.append(tmp)
-print(int(totalPred/18))
 file_test.close()
 for i in range(int(totalPred/18)):
     for j in range(9):
