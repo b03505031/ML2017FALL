@@ -338,16 +338,6 @@ for i in range(240):
 testx = np.array(test_x)
 testy = np.dot(testx,w)
 
-raw_ans =[]
-ans =[]
-with open('./ans.csv','r',encoding = 'Big5') as file:
-    for row in csv.reader(file):
-        raw_ans.append(row)
-for i in range(1,241):
-    ans.append(float(raw_ans[i][1]))
-ans_array=np.array(ans)
-print("RMSE: ",np.sqrt(np.mean(((testy-ans_array)**2))))
-
 if(ifSave==1):
     ofile = open(resFile, 'w')
     ofile.write("id,value")
