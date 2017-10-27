@@ -54,8 +54,8 @@ test_np = np.array(test_x)
 #norm
 if(norm==1):
     print("norming")
-    m = np.mean(x_np,axis=0)
-    std = np.std(x_np,axis=0)
+    m = np.mean(x_np,axis=1)
+    std = np.std(x_np,axis=1)
     x_np = x_np.T
     for i in range(106):
         if std[i] != 0:
