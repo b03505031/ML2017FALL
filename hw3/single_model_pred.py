@@ -41,7 +41,7 @@ te_x_np=te_x_np.reshape(num_of_test,width,length,1)
 te_x_np/=255
 
 
-model1 = load_model('./singlem_model.h5')
+model1 = load_model('./single_model.h5')
 result=model1.predict_classes(te_x_np)
 
 

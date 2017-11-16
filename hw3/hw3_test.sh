@@ -1,1 +1,1 @@
-python ./predict.py $1 $2
+python ./single_model_pred.py $1 $2
