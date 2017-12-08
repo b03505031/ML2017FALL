@@ -9,7 +9,6 @@ from keras.utils import np_utils
 
 trainFile='./training_label.txt'
 semiFile='./training_nolabel.txt'
-testFile='./testing_data.txt'
 EMBEDDING_DIM=300
 MAX_SEQUENCE_LENGTH=50
 
@@ -26,12 +25,6 @@ with open(semiFile,'r',encoding='utf-8') as file:
 for i in range(len(lines)):
     x_train.append((lines[i].replace(" ' ","")).replace("\n",""))
 
-
-with open(testFile,'r',encoding='utf-8') as file:
-    lines=file.readlines()
-for i in range(len(lines)):
-    if i is not 0:
-        x_train.append(lines[i].replace(str(i-1)+',',"").replace(" ' ","").replace("\n",""))
 
 #tokening
 tokenizer=Tokenizer()
