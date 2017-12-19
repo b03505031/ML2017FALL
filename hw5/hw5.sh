@@ -1,0 +1,1 @@
+python3 pred_em.py $1 $2
