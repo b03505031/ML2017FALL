@@ -3,7 +3,7 @@ import pandas as pd
 import csv
 from keras.layers import Embedding, Dropout, Dense, Input, Flatten, Concatenate
 from keras.models import load_model, Model
-from keras.optimizers import Adam, Adamax,Nadam,RMSprop
+from keras.optimizers import Nadam
 from keras.callbacks import Callback, EarlyStopping, ModelCheckpoint,TensorBoard
 from keras.preprocessing.sequence import pad_sequences
 from keras import backend as K
@@ -49,7 +49,8 @@ age=[]
 occ=[]
 sex=[]
 for i in range(len(user)):
-	if int(sex_d[str(user[i])]) is 0:
+	user_str=str(user[i])
+	if int(sex_d[user_str]) is 0:
 		msex.append([1])
 		fsex.append([0])
 		sex.append([0])
@@ -57,8 +58,8 @@ for i in range(len(user)):
 		msex.append([0])
 		fsex.append([1])
 		sex.append([1])
-	age.append([int(age_d[str(user[i])])])
-	occ.append([int(occ_d[str(user[i])])])
+	age.append([int(age_d[user_str])])
+	occ.append([int(occ_d[user_str])])
 sex=pad_sequences(sex)
 msex=pad_sequences(msex)
 fsex=pad_sequences(fsex)
