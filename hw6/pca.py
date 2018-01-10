@@ -203,6 +203,4 @@ if '--hw' in sys.argv:
     reconstruct-=np.min(reconstruct)
     reconstruct/=np.max(reconstruct)
     reconstruct=(reconstruct*255).astype(np.uint8)
-    if not os.path.exists(reconstructF):
-        os.makedirs(reconstructF)
     io.imsave(('reconstruction.jpg'),reconstruct.reshape(600,600,3).astype(np.uint8))
