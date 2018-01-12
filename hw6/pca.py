@@ -3,7 +3,7 @@ from skimage import io
 import sys
 import os
 import matplotlib.pyplot as plt
-imageFolder='./Aberdeen/'
+imageFolder=sys.argv[1]
 dataF='./imageSet.npy'
 meanF='./mean2.npy'
 uF='./U2.npy'
@@ -18,7 +18,7 @@ EIGENFACES=10
 def readImage(MAX):
     data=[]
     for i in range(MAX):
-        filename = imageFolder + str(i) + ".jpg"
+        filename = imageFolder +'/'+ str(i) + ".jpg"
         print("   Reading "+filename, end="\r")
         im = io.imread(filename)
         data.append(im.tolist())
@@ -29,11 +29,14 @@ def readImage(MAX):
     return data
 
 def getData():
-    if os.path.exists(dataF):
-        print("   Load images from "+dataF)
-        data=np.load(dataF)
-    else:
-        data=readImage(IMAGE_NUM)
+    data=[]
+    for i in range(IMAGE_NUM):
+        filename=imageFolder+'/'+str(i) + ".jpg"
+        #imageFolder +'/'+ str(i) + ".jpg"
+        print("   Reading "+filename, end="\r")
+        im = io.imread(filename)
+        data.append(im.tolist())
+    data=np.array(data)
     return data
 
 def getMean(data):
@@ -186,9 +189,10 @@ if '--test' in sys.argv:
     '''
 if '--hw' in sys.argv:
     print("\n==Reconstruct======================\n")
-    filename=(sys.argv[2]+'/'+sys.argv[3])
-    data= []
-    data_m=getMean(data).reshape(1,360000*3)
+    
+    filename=os.path.join(sys.argv[1],sys.argv[2])
+    data=getData().reshape(415,360000*3)
+    data_m=getMean(data).reshape(360000*3)
     U,S,V=getSVD(data,data_m)
     #data : 415,360000*3
     #data_m : 360000*3

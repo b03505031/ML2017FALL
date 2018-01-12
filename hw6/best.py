@@ -53,7 +53,7 @@ def dnn_autoencode(data,dim):
 
 image=np.load(imageF)
 image = image.astype('float32') / 255.
-image.reshape(len(a),784)
+image.reshape(len(image),784)
 data= dnn_autoencode(image,DIM)
 res = KMeans(n_clusters=2, random_state=None,init='random', n_init=30,max_iter=500,algorithm='auto').fit_predict(data)
 print(res)

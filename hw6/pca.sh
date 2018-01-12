@@ -1,1 +1,1 @@
-python3 pca.py --hw $1 $2
+python3 pca.py $1 $2 --hw
